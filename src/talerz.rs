@@ -65,7 +65,7 @@ async fn get_image_url(driver: &WebDriver) -> anyhow::Result<String> {
             ]
             .join(""),
         ))
-        .wait(Duration::from_secs(200), Duration::from_millis(100))
+        .wait(Duration::from_secs(10), Duration::from_millis(100))
         .first()
         .await?;
 
@@ -85,7 +85,7 @@ async fn get_image_url(driver: &WebDriver) -> anyhow::Result<String> {
         .query(By::XPath("//img[contains(@alt, 'PONIEDZIAŁEK')]"))
         .without_id(image.id().await?.unwrap_or_default())
         .without_attributes(&[("width", any), ("height", any)])
-        .wait(Duration::from_secs(200), Duration::from_millis(100))
+        .wait(Duration::from_secs(10), Duration::from_millis(100))
         .first()
         .await?;
 

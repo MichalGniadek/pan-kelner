@@ -49,6 +49,9 @@ async fn download_text(driver: &WebDriver) -> anyhow::Result<String> {
     sleep(Duration::from_millis(2000)).await;
     driver.execute("window.scrollBy(0, 1000);", vec![]).await?;
 
+    sleep(Duration::from_millis(2000)).await;
+    dbg!(driver.source().await?);
+
     // Find button to expand the description
     let display_more = driver
         .query(By::XPath(
@@ -60,7 +63,7 @@ async fn download_text(driver: &WebDriver) -> anyhow::Result<String> {
             ]
             .join(""),
         ))
-        .wait(Duration::from_secs(200), Duration::from_millis(100))
+        .wait(Duration::from_secs(10), Duration::from_millis(100))
         .first()
         .await?;
 
@@ -81,7 +84,7 @@ async fn download_text(driver: &WebDriver) -> anyhow::Result<String> {
         .query(By::XPath(
             &["/", &search("L U N C H  M E N U"), "/../.."].join(""),
         ))
-        .wait(Duration::from_secs(200), Duration::from_millis(500))
+        .wait(Duration::from_secs(10), Duration::from_millis(500))
         .first()
         .await?;
 
