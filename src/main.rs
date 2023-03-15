@@ -23,6 +23,9 @@ async fn main() -> anyhow::Result<()> {
 
     let driver = WebDriver::new("http://127.0.0.1:4444", caps).await?;
 
+    driver.set_window_rect(0, 0, 1292, 978).await?;
+    dbg!(driver.get_window_rect().await?);
+
     if let Err(err) = run_restaurants(&driver).await {
         driver.quit().await?;
         Err(err)
