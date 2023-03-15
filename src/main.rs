@@ -33,7 +33,7 @@ async fn main() -> anyhow::Result<()> {
 }
 
 async fn run_restaurants(driver: &WebDriver) -> anyhow::Result<()> {
-    fb_accept_cookies(driver).await?;
+    let _ = fb_accept_cookies(driver).await;
     let data = run_emalia(driver).await?;
     let image_path = run_talerz(driver).await?;
 
