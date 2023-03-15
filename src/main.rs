@@ -14,7 +14,7 @@ async fn main() -> anyhow::Result<()> {
     let _ = fs::create_dir("_site").await;
 
     let mut caps = DesiredCapabilities::firefox();
-    if false {
+    if true {
         caps.set_headless()?;
     }
 
