@@ -1,6 +1,6 @@
 use crate::common::search;
 use anyhow::Context;
-use std::time::Duration;
+use std::{path::Path, time::Duration};
 use thirtyfour::prelude::*;
 use tokio::time::sleep;
 
@@ -50,7 +50,7 @@ async fn download_text(driver: &WebDriver) -> anyhow::Result<String> {
     driver.execute("window.scrollBy(0, 1000);", vec![]).await?;
 
     sleep(Duration::from_millis(2000)).await;
-    dbg!(driver.source().await?);
+    driver.screenshot(Path::new("screen.png")).await?;
 
     // Find button to expand the description
     let display_more = driver

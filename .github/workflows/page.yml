@@ -11,3 +11,7 @@ jobs:
         - run: | 
             $GECKOWEBDRIVER/geckodriver &
             cargo run >> $GITHUB_STEP_SUMMARY
+        - uses: actions/upload-artifact@v3
+          with:
+            name: screen
+            path: screen.png
