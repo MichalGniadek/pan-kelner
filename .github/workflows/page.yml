@@ -9,5 +9,5 @@ jobs:
         - run: rustup toolchain install stable --profile minimal
         - uses: Swatinem/rust-cache@v2
         - run: | 
-            $GECKOWEBDRIVER &
+            $GECKOWEBDRIVER/geckodriver &
             cargo run
