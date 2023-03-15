@@ -6,7 +6,7 @@ use common::fb_accept_cookies;
 use emalia::run_emalia;
 use talerz::run_talerz;
 use tera::Context;
-use thirtyfour::{prelude::*, CapabilitiesHelper};
+use thirtyfour::{common::capabilities::firefox::FirefoxPreferences, prelude::*};
 use tokio::fs;
 
 #[tokio::main]
@@ -14,9 +14,11 @@ async fn main() -> anyhow::Result<()> {
     let _ = fs::create_dir("_site").await;
 
     let mut caps = DesiredCapabilities::firefox();
-    if true {
+    let mut preferences = FirefoxPreferences::new();
+    preferences.set("intl.accept_languages", "pl")?;
+    caps.set_preferences(preferences)?;
+    if false {
         caps.set_headless()?;
-        caps.add_firefox_arg("--disable-gpu")?;
     }
 
     let driver = WebDriver::new("http://127.0.0.1:4444", caps).await?;
