@@ -10,4 +10,4 @@ jobs:
         - uses: Swatinem/rust-cache@v2
         - run: | 
             $GECKOWEBDRIVER/geckodriver &
-            cargo run
+            cargo run >> $GITHUB_STEP_SUMMARY
