@@ -6,7 +6,7 @@ use common::fb_accept_cookies;
 use emalia::run_emalia;
 use talerz::run_talerz;
 use tera::Context;
-use thirtyfour::prelude::*;
+use thirtyfour::{prelude::*, CapabilitiesHelper};
 use tokio::fs;
 
 #[tokio::main]
@@ -16,6 +16,7 @@ async fn main() -> anyhow::Result<()> {
     let mut caps = DesiredCapabilities::firefox();
     if true {
         caps.set_headless()?;
+        caps.add_firefox_arg("--disable-gpu")?;
     }
 
     let driver = WebDriver::new("http://127.0.0.1:4444", caps).await?;
