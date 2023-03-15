@@ -1,0 +1,5 @@
+name: Create a new page
+on:
+  dispatch_workflow
+
+jobs:
