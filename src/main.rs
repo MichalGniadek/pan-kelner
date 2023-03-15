@@ -17,7 +17,7 @@ async fn main() -> anyhow::Result<()> {
     let mut preferences = FirefoxPreferences::new();
     preferences.set("intl.accept_languages", "pl")?;
     caps.set_preferences(preferences)?;
-    if true {
+    if false {
         caps.set_headless()?;
     }
 
