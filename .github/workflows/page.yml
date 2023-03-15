@@ -1,5 +1,8 @@
 name: Create a new page
-on:
-  dispatch_workflow
+on: workflow_dispatch
 
 jobs:
+  echo:
+      runs-on: ubuntu-latest
+      steps:
+        - run: echo "Hi!"
