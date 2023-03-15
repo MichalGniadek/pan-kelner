@@ -46,6 +46,13 @@ async fn download_text(driver: &WebDriver) -> anyhow::Result<String> {
         .goto("https://www.facebook.com/Emaliazablocie")
         .await?;
 
+    driver
+        .action_chain()
+        .key_down(Key::Escape)
+        .key_up(Key::Escape)
+        .perform()
+        .await?;
+
     sleep(Duration::from_millis(2000)).await;
     driver.execute("window.scrollBy(0, 1000);", vec![]).await?;
 
