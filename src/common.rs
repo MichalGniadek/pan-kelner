@@ -9,6 +9,9 @@ pub fn search(text: &str) -> String {
 pub async fn fb_accept_cookies(driver: &WebDriver) -> anyhow::Result<()> {
     driver.goto("https://www.facebook.com").await?;
 
+    sleep(Duration::from_millis(2000)).await;
+    dbg!(driver.source().await?);
+
     driver
         .query(By::XPath(
             &["/", &search("Zezwól tylko na niezbędne pliki cookie")].join(""),

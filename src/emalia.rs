@@ -49,9 +49,6 @@ async fn download_text(driver: &WebDriver) -> anyhow::Result<String> {
     sleep(Duration::from_millis(2000)).await;
     driver.execute("window.scrollBy(0, 1000);", vec![]).await?;
 
-    sleep(Duration::from_millis(2000)).await;
-    dbg!(driver.source().await?);
-
     // Find button to expand the description
     let display_more = driver
         .query(By::XPath(
