@@ -1,0 +1,5 @@
+Pillow==9.0.1
+numpy==1.22.3
+colour==0.1.5
+requests==2.27.1
+Jinja2==3.0.3
