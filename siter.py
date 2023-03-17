@@ -1,5 +1,6 @@
 import json
 import requests
+import os
 from imager import remap_img
 from jinja2 import Environment, FileSystemLoader
 
@@ -12,6 +13,7 @@ talerz_image.decode_content = True
 img = remap_img(talerz_image)
 img.save("_site/transformed.png")
 
+os.makedirs("_site")
 with open("_site/index.html", "w", encoding="utf-8") as f:
     env = Environment(loader=FileSystemLoader("templates"))
     text = env.get_template("index.html").render(
