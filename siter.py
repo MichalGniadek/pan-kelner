@@ -23,5 +23,5 @@ with open("_site/index.html", "w", encoding="utf-8") as f:
     env = Environment(loader=FileSystemLoader("templates"))
     text = env.get_template("index.html").render(date=f"{monday.strftime('%d.%m')}-{sunday.strftime('%d.%m')}",
                                                  emalia=data["emalia"],
-                                                 talerz_img="transformed.png")
+                                                 talerz_img=f"transformed.png?day={today.day}")
     f.write(text)
